@@ -12,3 +12,5 @@ def file_comparator(tmpdir):
 
     return FileComparator(str(file1), str(file2))
 
+def test_read_file(file_comparator):
+    assert file_comparator.read_file(file_comparator.file1) == {"Hello, world!", "Python is great. Yes, it is."}
