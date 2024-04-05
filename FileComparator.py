@@ -13,3 +13,13 @@ class FileComparator:
         with open(filename, 'w') as file:
             for line in data:
                 file.write(line + '\n')
+
+    def compare_files(self):
+        set1 = self.read_file(self.file1)
+        set2 = self.read_file(self.file2)
+
+        same = set1 & set2
+        diff = (set1 - set2) | (set2 - set1)
+
+        self.write_file('same.txt', same)
+        self.write_file('diff.txt', diff)
