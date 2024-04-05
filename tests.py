@@ -14,3 +14,11 @@ def file_comparator(tmpdir):
 
 def test_read_file(file_comparator):
     assert file_comparator.read_file(file_comparator.file1) == {"Hello, world!", "Python is great. Yes, it is."}
+
+def test_write_file(file_comparator, tmpdir):
+    data = {"Hello, world!", "Python is great. Yes, it is."}
+    file_path = str(tmpdir.join("test.txt"))
+    file_comparator.write_file(file_path, data)
+    with open(file_path, 'r') as file:
+        lines = set(line.strip() for line in file)
+    assert lines == data
