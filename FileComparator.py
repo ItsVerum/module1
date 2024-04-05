@@ -23,3 +23,4 @@ class FileComparator:
 
         self.write_file('same.txt', same)
         self.write_file('diff.txt', diff)
+
